@@ -49,4 +49,15 @@
       }
     });
   }
+
+  const entryIntro = document.querySelector('[data-entry-intro]');
+  if (entryIntro) {
+    const removeEntry = () => {
+      entryIntro.setAttribute('aria-hidden', 'true');
+      setTimeout(() => entryIntro.remove(), 450);
+    };
+    window.addEventListener('load', () => setTimeout(removeEntry, 3300), { once: true });
+    setTimeout(removeEntry, 4300);
+  }
+
 })();
