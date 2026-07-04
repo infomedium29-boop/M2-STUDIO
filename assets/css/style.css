@@ -183,3 +183,16 @@ main{overflow:hidden}
   .editorial-hero,.service-index-hero,.immersive-hero,.render-hero,.quiet-hero,.overlap-hero,.detail-hero,.portfolio-intro-hero,.process-intro-hero,.contact-intro-hero{padding-top:calc(var(--header-h) + 3.2rem);padding-bottom:4rem}
   .story-moodboard,.overlap-media{min-height:390px}.process-hero-steps div{min-height:78px;padding:1rem}.process-hero-steps strong{font-size:1.35rem}
 }
+
+
+/* Premium font system: Bodoni Moda + Manrope */
+body{font-family:"Manrope",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.012em}
+.hero h1,.page-hero h1,.project-hero h1,.split-text h2,.section-heading h2,.text-panel h2,.editorial-copy h2,.cta-section h2,.service-card span,.detail-card span,.value span,.step span,.timeline-item span,.service-card h3,.detail-card h2,.value h3,.step h3,.timeline-item h2,.project-card h3,.contact-card h2,.legal-copy h2,.editorial-hero h1,.immersive-hero h1,.render-hero h1,.quiet-hero h1,.overlap-hero h1,.detail-hero h1,.portfolio-intro-hero h1,.process-intro-hero h1,.contact-intro-hero h1,.service-index-list span,.service-index-list strong,.quiet-grid span,.process-hero-steps span,.process-hero-steps strong,.contact-intro-card span{font-family:"Bodoni Moda",Georgia,"Times New Roman",serif;font-weight:500}
+.hero h1,.page-hero h1,.project-hero h1,.editorial-hero h1,.immersive-hero h1,.render-hero h1,.quiet-hero h1,.overlap-hero h1,.detail-hero h1,.portfolio-intro-hero h1,.process-intro-hero h1,.contact-intro-hero h1{letter-spacing:-.043em;line-height:.91}
+.split-text h2,.section-heading h2,.text-panel h2,.editorial-copy h2,.cta-section h2{letter-spacing:-.035em;line-height:.98}
+.service-card h3,.detail-card h2,.value h3,.step h3,.timeline-item h2,.project-card h3,.service-index-list strong,.process-hero-steps strong,.contact-card h2,.legal-copy h2{letter-spacing:-.024em;line-height:1.02}
+p,.hero p,.split-text p,.section-heading p,.text-panel p,.editorial-copy p,.page-hero-text p,.project-hero-copy p,.contact-card p,.contact-card li,.legal-copy p{font-weight:400;letter-spacing:-.006em;line-height:1.78}
+.desktop-nav,.nav-cta,.mobile-cta,.btn,.eyebrow,.section-kicker,.text-link,.service-card a,.project-card span,.contact-form label,.site-footer h3{font-family:"Manrope",Inter,ui-sans-serif,system-ui,sans-serif;letter-spacing:.105em;font-weight:700}
+.hero .eyebrow,.project-hero .eyebrow{letter-spacing:.15em}
+.contact-form input,.contact-form textarea,.contact-form select{font-family:"Manrope",Inter,ui-sans-serif,system-ui,sans-serif}
+@media (max-width:560px){.hero h1,.page-hero h1,.project-hero h1,.editorial-hero h1,.immersive-hero h1,.render-hero h1,.quiet-hero h1,.overlap-hero h1,.detail-hero h1,.portfolio-intro-hero h1,.process-intro-hero h1,.contact-intro-hero h1{letter-spacing:-.035em;line-height:.94}}
