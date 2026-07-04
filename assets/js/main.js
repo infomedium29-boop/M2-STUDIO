@@ -63,12 +63,11 @@
   const horizontalProcess = document.querySelector('[data-horizontal-process]');
   const processTrack = horizontalProcess?.querySelector('[data-process-track]');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const desktopProcess = window.matchMedia('(min-width: 901px)');
   let processTicking = false;
 
   const updateHorizontalProcess = () => {
     processTicking = false;
-    if (!horizontalProcess || !processTrack || reduceMotion.matches || !desktopProcess.matches) {
+    if (!horizontalProcess || !processTrack || reduceMotion.matches) {
       processTrack?.style.setProperty('--process-x', '0px');
       return;
     }
@@ -76,7 +75,9 @@
     const sectionTop = horizontalProcess.offsetTop;
     const maxScroll = Math.max(1, horizontalProcess.offsetHeight - window.innerHeight);
     const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / maxScroll));
-    const maxX = Math.max(0, processTrack.scrollWidth - window.innerWidth + (window.innerWidth * 0.1));
+    const windowEl = horizontalProcess.querySelector('.process-scroll-window');
+    const viewportWidth = windowEl?.clientWidth || window.innerWidth;
+    const maxX = Math.max(0, processTrack.scrollWidth - viewportWidth);
     processTrack.style.setProperty('--process-x', `${-maxX * progress}px`);
   };
 
@@ -91,7 +92,6 @@
     updateHorizontalProcess();
     window.addEventListener('scroll', requestHorizontalProcess, { passive: true });
     window.addEventListener('resize', requestHorizontalProcess, { passive: true });
-    desktopProcess.addEventListener?.('change', requestHorizontalProcess);
     reduceMotion.addEventListener?.('change', requestHorizontalProcess);
   }
 
