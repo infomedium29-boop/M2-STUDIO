@@ -60,48 +60,4 @@
     setTimeout(removeEntry, 4300);
   }
 
-  const horizontalProcess = document.querySelector('[data-horizontal-process]');
-  const processTrack = horizontalProcess?.querySelector('[data-process-track]');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let processTicking = false;
-
-  const updateHorizontalProcess = () => {
-    processTicking = false;
-    if (!horizontalProcess || !processTrack || reduceMotion.matches) {
-      processTrack?.style.setProperty('--process-x', '0px');
-      horizontalProcess?.style.removeProperty('--process-section-height');
-      return;
-    }
-
-    const windowEl = horizontalProcess.querySelector('.process-scroll-window');
-    const viewportWidth = windowEl?.clientWidth || window.innerWidth;
-    const maxX = Math.max(0, processTrack.scrollWidth - viewportWidth);
-
-    // The section height is tied to the horizontal distance so the sticky part
-    // visually pauses vertical movement until all five cards pass across.
-    const travelDistance = Math.max(window.innerHeight * 1.45, maxX * 1.28);
-    const sectionHeight = Math.ceil(window.innerHeight + travelDistance);
-    horizontalProcess.style.setProperty('--process-section-height', `${sectionHeight}px`);
-
-    const sectionTop = horizontalProcess.offsetTop;
-    const maxScroll = Math.max(1, sectionHeight - window.innerHeight);
-    const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / maxScroll));
-    processTrack.style.setProperty('--process-x', `${-maxX * progress}px`);
-  };
-
-  const requestHorizontalProcess = () => {
-    if (!processTicking) {
-      processTicking = true;
-      window.requestAnimationFrame(updateHorizontalProcess);
-    }
-  };
-
-  if (horizontalProcess && processTrack) {
-    updateHorizontalProcess();
-    window.addEventListener('scroll', requestHorizontalProcess, { passive: true });
-    window.addEventListener('resize', requestHorizontalProcess, { passive: true });
-    reduceMotion.addEventListener?.('change', requestHorizontalProcess);
-  }
-
-
 })();
