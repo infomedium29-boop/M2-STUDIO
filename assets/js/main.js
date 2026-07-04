@@ -69,15 +69,23 @@
     processTicking = false;
     if (!horizontalProcess || !processTrack || reduceMotion.matches) {
       processTrack?.style.setProperty('--process-x', '0px');
+      horizontalProcess?.style.removeProperty('--process-section-height');
       return;
     }
 
-    const sectionTop = horizontalProcess.offsetTop;
-    const maxScroll = Math.max(1, horizontalProcess.offsetHeight - window.innerHeight);
-    const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / maxScroll));
     const windowEl = horizontalProcess.querySelector('.process-scroll-window');
     const viewportWidth = windowEl?.clientWidth || window.innerWidth;
     const maxX = Math.max(0, processTrack.scrollWidth - viewportWidth);
+
+    // The section height is tied to the horizontal distance so the sticky part
+    // visually pauses vertical movement until all five cards pass across.
+    const travelDistance = Math.max(window.innerHeight * 1.45, maxX * 1.28);
+    const sectionHeight = Math.ceil(window.innerHeight + travelDistance);
+    horizontalProcess.style.setProperty('--process-section-height', `${sectionHeight}px`);
+
+    const sectionTop = horizontalProcess.offsetTop;
+    const maxScroll = Math.max(1, sectionHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / maxScroll));
     processTrack.style.setProperty('--process-x', `${-maxX * progress}px`);
   };
 
