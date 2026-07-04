@@ -60,4 +60,40 @@
     setTimeout(removeEntry, 4300);
   }
 
+  const horizontalProcess = document.querySelector('[data-horizontal-process]');
+  const processTrack = horizontalProcess?.querySelector('[data-process-track]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const desktopProcess = window.matchMedia('(min-width: 901px)');
+  let processTicking = false;
+
+  const updateHorizontalProcess = () => {
+    processTicking = false;
+    if (!horizontalProcess || !processTrack || reduceMotion.matches || !desktopProcess.matches) {
+      processTrack?.style.setProperty('--process-x', '0px');
+      return;
+    }
+
+    const sectionTop = horizontalProcess.offsetTop;
+    const maxScroll = Math.max(1, horizontalProcess.offsetHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / maxScroll));
+    const maxX = Math.max(0, processTrack.scrollWidth - window.innerWidth + (window.innerWidth * 0.1));
+    processTrack.style.setProperty('--process-x', `${-maxX * progress}px`);
+  };
+
+  const requestHorizontalProcess = () => {
+    if (!processTicking) {
+      processTicking = true;
+      window.requestAnimationFrame(updateHorizontalProcess);
+    }
+  };
+
+  if (horizontalProcess && processTrack) {
+    updateHorizontalProcess();
+    window.addEventListener('scroll', requestHorizontalProcess, { passive: true });
+    window.addEventListener('resize', requestHorizontalProcess, { passive: true });
+    desktopProcess.addEventListener?.('change', requestHorizontalProcess);
+    reduceMotion.addEventListener?.('change', requestHorizontalProcess);
+  }
+
+
 })();
