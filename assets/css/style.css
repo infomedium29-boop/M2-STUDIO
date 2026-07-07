@@ -207,3 +207,9 @@ p{font-weight:400;}
 .split-text h2,.section-heading h2,.text-panel h2,.editorial-copy h2,.cta-section h2{font-weight:500;letter-spacing:-.018em;line-height:1.02;}
 .service-card h3,.detail-card h2,.value h3,.step h3,.timeline-item h2,.project-card h3,.process-hero-steps strong,.quiet-grid span,.contact-intro-card span{font-weight:500;letter-spacing:-.012em;}
 body{font-family:var(--font-body);}
+
+/* Footer logo visibility fix */
+.site-footer .footer-logo{
+  filter: brightness(0) invert(1) !important;
+  opacity: .94;
+}
