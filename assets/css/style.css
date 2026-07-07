@@ -203,10 +203,15 @@ p{font-weight:400;}
 .desktop-nav,.nav-cta,.mobile-cta,.btn,.eyebrow,.text-link,.service-card a,.project-card span{font-weight:650;letter-spacing:.11em;}
 
 /* Cormorant Garamond premium tuning */
-.hero h1,.page-hero h1,.project-hero h1,.editorial-hero h1,.immersive-copy h1,.render-hero h1,.quiet-copy h1,.overlap-copy h1,.detail-hero-card h1,.portfolio-copy h1,.process-copy h1,.contact-intro-copy h1{font-weight:500;letter-spacing:-.025em;line-height:.92;}
-.split-text h2,.section-heading h2,.text-panel h2,.editorial-copy h2,.cta-section h2{font-weight:500;letter-spacing:-.018em;line-height:1.02;}
+.hero h1,.page-hero h1,.project-hero h1,.editorial-hero h1,.immersive-copy h1,.render-hero h1,.quiet-copy h1,.overlap-copy h1,.detail-hero-card h1,.portfolio-copy h1,.process-copy h1,.contact-intro-copy h1{font-weight:500;letter-spacing:-.018em;line-height:1.06;text-wrap:balance;}
+.split-text h2,.section-heading h2,.text-panel h2,.editorial-copy h2,.cta-section h2{font-weight:500;letter-spacing:-.014em;line-height:1.08;text-wrap:balance;}
 .service-card h3,.detail-card h2,.value h3,.step h3,.timeline-item h2,.project-card h3,.process-hero-steps strong,.quiet-grid span,.contact-intro-card span{font-weight:500;letter-spacing:-.012em;}
 body{font-family:var(--font-body);}
+
+@media (max-width:760px){
+  .hero h1,.page-hero h1,.project-hero h1,.editorial-hero h1,.immersive-copy h1,.render-hero h1,.quiet-copy h1,.overlap-copy h1,.detail-hero-card h1,.portfolio-copy h1,.process-copy h1,.contact-intro-copy h1{line-height:1.08;letter-spacing:-.014em;}
+  .split-text h2,.section-heading h2,.text-panel h2,.editorial-copy h2,.cta-section h2{line-height:1.1;}
+}
 
 /* Footer logo visibility fix */
 .site-footer .footer-logo{
